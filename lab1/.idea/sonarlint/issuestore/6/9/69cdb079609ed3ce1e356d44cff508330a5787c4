@@ -1,0 +1,20 @@
+
+f	java:S117X"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ ñµ
+f	java:S117X"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ ñµ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ë»õ‡üÿÿÿÿ
+7	java:S1311""Add a default case to this switch.(¨ÕÉ
+V
+java:S1659X"@Declare "Max" and all following declarations on a separate line.(ÿ ñµ
+9
+java:S2119Y"Save and re-use this "Random".(šŸ«íøÿÿÿÿ
+h	java:S100n"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡è¢çşÿÿÿÿ
+W
+java:S1659Á"@Declare "rem" and all following declarations on a separate line.(÷Ó¨
+I
+java:S1128".Remove this unused import 'java.io.Closeable'.(î¤ñœşÿÿÿÿ
+<
+java:S1128"&Remove this unused import 'java.text'.(ë¼Èí
+O
+java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ
+U
+java:S1128	"?Remove this unused import 'java.time.format.DateTimeFormatter'.(‰÷÷ª
