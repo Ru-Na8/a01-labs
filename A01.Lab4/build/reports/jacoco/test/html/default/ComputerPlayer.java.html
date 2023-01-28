@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ComputerPlayer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">A01.Lab3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">ComputerPlayer.java</span></div><h1>ComputerPlayer.java</h1><pre class="source lang-java linenums">import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+public class ComputerPlayer extends DiceHand{
+    int num;
+    public Scanner scanner;
+<span class="fc" id="L8">    ArrayList&lt;Integer&gt; ind = new ArrayList&lt;&gt;();</span>
+    private int[] dices;         //current roll of dices
+    private int cheatCount;
+    public List&lt;Dice&gt; diceList;
+
+
+
+    public ComputerPlayer() {
+<span class="fc" id="L16">        super(5);</span>
+<span class="fc" id="L17">    }</span>
+
+    public void rollDices() {
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        for (int i=0; i&lt;hand.size(); i++) {</span>
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">            if(ind.contains(i)){</span>
+<span class="nc" id="L22">                continue;</span>
+            }
+            else{
+<span class="fc" id="L25">                hand.get(i).roll();</span>
+            }
+        }
+<span class="fc" id="L28">    }</span>
+    public void selectDices() {
+                // split the input string to get the selected dice numbers
+<span class="fc bfc" id="L31" title="All 2 branches covered.">                for(int i =0; i&lt;hand.size(); i++) {</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">                    if(hand.get(i).getValue()==1){</span>
+<span class="fc" id="L33">                        ind.add(i);</span>
+                    }
+                    else{
+                        continue;
+                    }
+                }
+<span class="fc" id="L39">            }</span>
+
+    public int getScore(){
+<span class="fc" id="L42">        int score = 0;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        for(Dice dice : hand){</span>
+<span class="fc" id="L44">            score += dice.getValue();</span>
+<span class="fc" id="L45">        }</span>
+<span class="fc" id="L46">        return score ;</span>
+        }
+
+    }
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

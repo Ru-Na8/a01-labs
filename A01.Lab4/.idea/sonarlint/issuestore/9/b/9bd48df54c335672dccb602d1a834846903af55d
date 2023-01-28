@@ -1,0 +1,8 @@
+
+~
+java:S13197"cThe type of "lst" should be an interface such as "List" rather than the implementation "ArrayList".(æÝûýÿÿÿÿ
+0
+java:S1220""Move this file to a named package.
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨¦®Æ
+1
+java:S3626>"Remove this redundant jump.(ÉŠ©ƒ
