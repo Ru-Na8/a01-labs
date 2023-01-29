@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DicePlayer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">A01.Lab3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">DicePlayer.java</span></div><h1>DicePlayer.java</h1><pre class="source lang-java linenums">import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class DicePlayer extends DiceHand{
+    int[] dices;         //current roll of dices
+    int[] savedDices;
+    private int round;
+    int cheatCount;
+    private Scanner scanner;
+    public List&lt;Dice&gt; diceList;
+    public List&lt;Integer&gt; heldDiceIndex;
+
+    public DicePlayer() {
+<span class="fc" id="L16">        super(5);</span>
+<span class="fc" id="L17">        diceList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L18">        heldDiceIndex = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L19">        dices = new int[5];</span>
+<span class="fc" id="L20">        savedDices = new int[5];</span>
+<span class="fc" id="L21">        round = 1;</span>
+<span class="fc" id="L22">        cheatCount = 0;</span>
+<span class="fc" id="L23">        scanner = new Scanner(System.in);</span>
+
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        for (int i = 0; i &lt; 5; i++) {</span>
+<span class="fc" id="L26">            Dice die = new Dice();</span>
+<span class="fc" id="L27">            diceList.add(die);</span>
+        }
+<span class="fc" id="L29">    }</span>
+
+<span class="fc" id="L31">        Scanner in = new Scanner(System.in);</span>
+
+        void rollDices() {
+<span class="fc bfc" id="L34" title="All 2 branches covered.">            for (int i = 0; i &lt; dices.length; i++)</span>
+                // roll the not saved dice only
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">                if (savedDices[i] == 0) {</span>
+<span class="fc" id="L37">                    dices[i] = (int) (Math.random() * 6) + 1;</span>
+                } else {
+<span class="nc" id="L39">                    savedDices[i] = dices[i];              // hold the saved dice</span>
+
+                }
+<span class="fc" id="L42">        }</span>
+
+
+        // display the current roll of dices
+        void displayDices() {
+<span class="nc" id="L47">            System.out.println(&quot;Round &quot; + round + &quot;: &quot; + Arrays.toString(dices));</span>
+<span class="nc" id="L48">        }</span>
+
+        //select dices to save
+        void selectDices() {
+            while (true) {
+                // prompt the user to select dices to save
+<span class="nc" id="L54">                System.out.println(&quot;Do you want to save any dice? &quot;);</span>
+<span class="nc" id="L55">                String choice = scanner.nextLine();</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">                if (choice.toLowerCase().equals(&quot;no&quot;)) {</span>
+<span class="nc" id="L57">                    break;</span>
+                } else {
+<span class="nc" id="L59">                    System.out.println(&quot;Select dices to save (e.g. 1 2 3): &quot;);</span>
+<span class="nc" id="L60">                    String input = scanner.nextLine();</span>
+                    // split the input string to get the selected dice numbers
+<span class="nc" id="L62">                    String[] inputArray = input.split(&quot; &quot;);</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">                    for (int i = 0; i &lt; inputArray.length; i++) {</span>
+<span class="nc" id="L64">                        int index = Integer.parseInt(inputArray[i]) - 1;</span>
+<span class="nc" id="L65">                        savedDices[index] = dices[index];</span>
+                    }
+<span class="nc" id="L67">                    break;</span>
+                }
+            }
+<span class="nc" id="L70">        }</span>
+
+
+        // change a dice value
+        void changeDice() {
+<span class="nc" id="L75">            System.out.println(&quot;Do you want to change a dice? (y/n)&quot;);</span>
+<span class="nc" id="L76">            String input = scanner.nextLine();</span>
+<span class="nc bnc" id="L77" title="All 4 branches missed.">            if (input.equals(&quot;y&quot;) &amp;&amp; cheatCount &lt; 1) {</span>
+<span class="nc" id="L78">                System.out.println(&quot;Which dice do you want to change? (1-5)&quot;);</span>
+<span class="nc" id="L79">                int index = scanner.nextInt() - 1;</span>
+<span class="nc" id="L80">                System.out.println(&quot;Enter new value for dice (1-6)&quot;);</span>
+<span class="nc" id="L81">                int value = scanner.nextInt();</span>
+<span class="nc" id="L82">                dices[index] = value;</span>
+<span class="nc" id="L83">                cheatCount++;</span>
+            }
+<span class="nc" id="L85">        }</span>
+
+        void calculateResult() {
+            //count of each number rolled on the dice
+<span class="fc" id="L89">            int[] count = new int[6];</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">            for (int i = 0; i &lt; dices.length; i++) {</span>
+<span class="fc" id="L91">                count[dices[i] - 1]++;</span>
+            }
+<span class="fc" id="L93">            int maxCount = 0;</span>
+<span class="fc" id="L94">            int maxValue = 0;</span>
+<span class="fc" id="L95">            int sum = 0;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">            for (int i = 0; i &lt; count.length; i++) {</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">                if (count[i] &gt; maxCount) {</span>
+<span class="fc" id="L98">                    maxCount = count[i];</span>
+<span class="fc" id="L99">                    maxValue = i + 1;</span>
+                }
+<span class="fc" id="L101">                sum += (i + 1) * count[i];</span>
+            }
+<span class="fc" id="L103">            System.out.println(&quot;You have &quot; + maxCount + &quot; dices with the value &quot; + maxValue);</span>
+<span class="fc" id="L104">            System.out.println(&quot;The sum of your dices is &quot; + sum);</span>
+
+            // Check for different combinations
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">            if (maxCount == 5) {</span>
+<span class="nc" id="L108">                System.out.println(&quot;Congratulations! You have Yatzy!&quot;);</span>
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">            } else if (maxCount &gt;= 4) {</span>
+<span class="nc" id="L110">                System.out.println(&quot;Congratulations! You have a Four of a Kind!&quot;);</span>
+<span class="pc bpc" id="L111" title="1 of 2 branches missed.">            } else if (maxCount &gt;= 3) {</span>
+
+<span class="nc" id="L113">                System.out.println(&quot;Congratulations! You have a Three of a Kind!&quot;);</span>
+            } else {
+<span class="fc" id="L115">                System.out.println(&quot;Sorry, you did not get a good result this round.&quot;);</span>
+            }
+<span class="fc" id="L117">        }</span>
+
+    }
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

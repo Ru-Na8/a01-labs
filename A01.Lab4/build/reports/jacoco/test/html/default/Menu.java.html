@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Menu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">A01.Lab3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Menu.java</span></div><h1>Menu.java</h1><pre class="source lang-java linenums">
+import java.util.Scanner;
+
+<span class="nc" id="L4">public class Menu {</span>
+
+  public void MenuLoop() {
+
+        int choice;
+<span class="nc" id="L9">        Dice dice = new Dice();</span>
+<span class="nc" id="L10">        DiceGraphic graphicDice = new DiceGraphic() {</span>
+          public String to_String() {
+<span class="nc" id="L12">            return null;</span>
+          }
+        };
+<span class="nc" id="L15">        DiceGraphicCheating cheatingDice = new DiceGraphicCheating() {</span>
+          @Override
+          public Dice setRoll(int value) {
+
+<span class="nc" id="L19">            return null;</span>
+          }
+        };
+<span class="nc" id="L22">        DiceGame game = new DiceGame();</span>
+
+<span class="nc" id="L24">        Scanner in = new Scanner(System.in);</span>
+
+
+    while (true) {
+      // Show the menu
+<span class="nc" id="L29">      System.out.println(&quot;Menu:&quot;);</span>
+<span class="nc" id="L30">      System.out.println(&quot;1. Dice and roll it&quot;);</span>
+<span class="nc" id="L31">      System.out.println(&quot;2. Create a DiceGraphic and roll it&quot;);</span>
+<span class="nc" id="L32">      System.out.println(&quot;3. Create a DiceGraphicCheating and roll it&quot;);</span>
+<span class="nc" id="L33">      System.out.println(&quot;4. Play a dice game&quot;);</span>
+<span class="nc" id="L34">      System.out.println(&quot;5. Exit&quot;);</span>
+<span class="nc" id="L35">      System.out.print(&quot;Enter your choice: &quot;);</span>
+
+<span class="nc" id="L37">      choice = in.nextInt();</span>
+
+<span class="nc bnc" id="L39" title="All 6 branches missed.">      switch (choice) {</span>
+        case 1 -&gt; {
+<span class="nc" id="L41">          Dice mydice = new Dice();</span>
+<span class="nc" id="L42">          mydice.roll();</span>
+<span class="nc" id="L43">          System.out.println(&quot;The value of the dice is: &quot; + mydice.getValue());</span>
+<span class="nc" id="L44">        }</span>
+<span class="nc" id="L45">        case 2 -&gt; System.out.println(&quot;The value of the dice is: &quot; + graphicDice.toString());</span>
+
+        // Show the graphic representation of the dice
+
+        case 3 -&gt; {
+          // Cheat by setting the value of the dice
+          // Choose any value between 1 and 6
+<span class="nc" id="L52">          dice.roll();</span>
+<span class="nc" id="L53">          System.out.println(&quot;Enter the new value: &quot;+ dice);</span>
+<span class="nc" id="L54">          int newValue = in.nextInt();</span>
+<span class="nc" id="L55">          System.out.println(&quot;After cheating, the value of the dice is: &quot; + cheatingDice.setRoll(newValue));</span>
+<span class="nc" id="L56">        }</span>
+        case 4 -&gt;
+          // Play a dice game
+<span class="nc" id="L59">                game.PlayRound();</span>
+
+        case 5 -&gt; {
+          // Exit the program
+<span class="nc" id="L63">          System.out.println(&quot;Exiting the program...&quot;);</span>
+<span class="nc" id="L64">          return;</span>
+        }
+<span class="nc" id="L66">        default -&gt; System.out.println(&quot;Invalid choice. Please try again.&quot;);</span>
+      }
+    }
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

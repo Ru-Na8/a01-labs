@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DicePlayerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-01-28T18:26:41" hostname="LK8545s-Air" time="0.03">
+  <properties/>
+  <testcase name="testCalculateResult()" classname="DicePlayerTest" time="0.026"/>
+  <testcase name="testRollDices()" classname="DicePlayerTest" time="0.001"/>
+  <system-out><![CDATA[You have 2 dices with the value 4
+The sum of your dices is 21
+Sorry, you did not get a good result this round.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

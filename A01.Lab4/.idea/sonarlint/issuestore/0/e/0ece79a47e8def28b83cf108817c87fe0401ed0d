@@ -1,0 +1,12 @@
+
+s	java:S1355"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ
+j
+java:S1104"TMake diceList a static final constant or non-public and provide accessors if needed.(ÿ§«›
+o
+java:S1104"YMake heldDiceIndex a static final constant or non-public and provide accessors if needed.(ÿ¡õ
+0
+java:S1220""Move this file to a named package.
+?
+java:S2140%")Use "java.util.Random.nextInt()" instead.(š»ô
+y
+java:S11579"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(×úĞÄ
