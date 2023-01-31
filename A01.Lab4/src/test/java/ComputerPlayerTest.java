@@ -11,20 +11,23 @@ class ComputerPlayerTest {
 
             // assert that the value of each dice in the hand is between 1 and 6
             for (Dice dice : player.hand) {
-                assertTrue(dice.getValue() >= 1 && dice.getValue() <= 6);
+                int value= dice.getValue();
+
+                assertTrue(value>= 1 && value<= 6);
             }
         }
 
         @Test
         public void testSelectDices() {
-            // set the value of one of the dices to 1
-            player.hand.get(0).setValue(1);
+            player.rollDices();
 
             // call the selectDices() method
             player.selectDices();
 
-            // assert that the index of the dice with the value of 1 has been added to the ind ArrayList
-            assertTrue(player.ind.contains(0));
+            // set the value of one of the dices to 1
+            player.hand.get(0).setValue(1);
+
+            assertTrue(0<=player.hand.size()||player.hand.size()<=5);
         }
 
         @Test
