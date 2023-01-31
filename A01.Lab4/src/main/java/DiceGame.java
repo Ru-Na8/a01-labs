@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class DiceGame {
-    private int round;
+    public int round;
     DicePlayer player = new DicePlayer();
     MonkeyPlayer monkeyPlayer = new MonkeyPlayer();
     ComputerPlayer computerPlayer = new ComputerPlayer();
