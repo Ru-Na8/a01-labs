@@ -1,54 +1,54 @@
-# Objektorienterad programmering – A01 Labs (1DT905, LNU)
+ # Lab 2 – Dice Game (OOP 1DT905)
 
-Detta repo innehåller mina laborationer i kursen **Objektorienterad programmering (1DT905)** vid Linnéuniversitetet.  
-Varje labb är en separat uppgift med fokus på olika moment i objektorienterad programmering i **Java**.
-
----
-
-## Innehåll
-
-### [Lab 1 – Konsolverktyg](./lab1)
-- Enkel menybaserad applikation i konsolen.
-- Funktioner: slumptal, BMI, citat, tid/datum, siffersumma.
-- Fokus: **grundläggande Java, metoder och användarinteraktion**.
-
-### [Lab 2 – Dice Game (grundversion)](./A01.lab2)
-- Objektorienterad implementation av ett tärningsspel.
-- Klasser: `Dice`, `DiceGraphic`, `DicePlayer`, `DiceHand`, `DiceGame`.
-- Fokus: **klassdesign, arv, komposition**.
-
-### [Lab 3 – Dice Game med spelartyper](./A01Lab3)
-- Utökar Lab 2 med olika spelartyper (`ComputerPlayer`, `MonkeyPlayer`).
-- Meny för att starta spelet och välja spelare.
-- Fokus: **arv, polymorfism och interaktion mellan objekt**.
-
-### [Lab 4 – Dice Game med tester](./A01.Lab4)
-- Samma spelkod som Lab 3.
-- Introduktion till enhetstester med **JUnit**.
-- Tester för tärningar, spelare och spelmotorn.
-- Fokus: **testbar design och kvalitetssäkring**.
-
-### [Lab 5 – Utökad testtäckning](./A01.Lab5)
-- Utökar Lab 4 med fler tester (inkl. `MonkeyPlayerTest`, `DiceHandTest`).
-- Mer komplett testsvit för hela spelet.
-- Fokus: **testtäckning, robusthet och underhållbarhet**.
+This project is **Lab 2** from the *Object-Oriented Programming* course (1DT905, Linnaeus University).  
+The assignment was to design and build a simple dice game in **Java**, applying the principles of **class design and responsibility separation**.
 
 ---
 
-## Teknisk miljö
-- **Språk:** Java 17  
-- **Byggsystem:** Gradle (per labb)  
-- **Testning:** JUnit 5  
-- **IDE:** IntelliJ IDEA / VS Code (rekommenderad)
+## Overview
+The program is structured into multiple classes, each modeling a different part of the game:
+
+- **`Dice.java`**  
+  Models a standard die and provides a `roll()` method.  
+
+- **`DiceGraphic.java`**  
+  Extends `Dice` by adding a textual/visual representation of the roll result.  
+
+- **`DiceGraphicCheating.java`**  
+  A “cheating die” that can be manipulated to produce controlled outcomes.  
+
+- **`DiceHand.java`**  
+  Manages a group of dice (a player’s “hand”).  
+
+- **`DicePlayer.java`**  
+  Represents a player who owns a `DiceHand`.  
+
+- **`DiceGame.java`**  
+  Contains the main game logic, including player turns, dice rolls, and scoring.  
+
+- **`Main.java`**  
+  The entry point of the application that launches the game.  
 
 ---
 
-## Körning
-Från respektive labbmapp:
+## Key Idea
+Each class has **one responsibility**:  
+- Game pieces (`Dice`, `DiceGraphic`, `DiceGraphicCheating`)  
+- Containers (`DiceHand`)  
+- Players (`DicePlayer`)  
+- Game flow (`DiceGame`, `Main`)  
 
+This separation makes the system modular, easier to understand, extend, and maintain.  
+
+---
+## Requirements
+- **Java 17** (or later)  
+
+---
+
+## Running the Program
+From the repository root:  
 ```bash
-# Bygg och kör tester
-./gradlew clean test
-
-# Kör applikationen (om mainClass är konfigurerad i build.gradle)
-./gradlew run
+cd A01.lab2
+javac *.java
+java Main
